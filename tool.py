@@ -33,7 +33,7 @@ def list_img_file(directory):
         name, fileformat = filename.split(".")
         if fileformat.lower() == "jpg" or fileformat.lower() == "png" or fileformat.lower() == "gif":
             new_list.append(filename)
-    # print new_list
+    print new_list
     return new_list
 
 
@@ -71,7 +71,8 @@ def compress(choose, des_dir, src_dir, file_list):
 def compress_photo():
     '''调用压缩图片的函数
     '''
-    src_dir, des_dir = "photos/", "min_photos/"
+    #global file_list_des
+    src_dir, des_dir = "./photos/", "./min_photos/"
     
     if directory_exists(src_dir):
         if not directory_exists(src_dir):
@@ -129,7 +130,7 @@ def handle_photo():
     list_info.reverse()  # 翻转
     final_dict = {"list": list_info}
 
-    with open("F:/blog/source/photos/data.json","w") as fp:
+    with open("/Users/wardseptember/git/blog/source/photos/data.json","w") as fp:
         json.dump(final_dict, fp)
 
 def cut_photo():
@@ -173,7 +174,6 @@ if __name__ == "__main__":
     compress_photo()   # 压缩图片，并保存到mini_photos文件夹下
     git_operation()    # 提交到github仓库
     handle_photo()     # 将文件处理成json格式，存到博客仓库中
-    
     
     
     
